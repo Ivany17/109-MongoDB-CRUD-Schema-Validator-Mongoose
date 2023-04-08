@@ -1,0 +1,86 @@
+use('fm_mongo');
+// db.inventory.insertMany( [
+//    { item: "canvas", qty: 100, size: { h: 28, w: 35.5, uom: "cm" }, status: "A" },
+//    { item: "journal", qty: 25, size: { h: 14, w: 21, uom: "cm" }, status: "A" },
+//    { item: "mat", qty: 85, size: { h: 27.9, w: 35.5, uom: "cm" }, status: "A" },
+//    { item: "mousepad", qty: 25, size: { h: 19, w: 22.85, uom: "cm" }, status: "P" },
+//    { item: "notebook", qty: 50, size: { h: 8.5, w: 11, uom: "in" }, status: "P" },
+//    { item: "paper", qty: 100, size: { h: 8.5, w: 11, uom: "in" }, status: "D" },
+//    { item: "planner", qty: 75, size: { h: 22.85, w: 30, uom: "cm" }, status: "D" },
+//    { item: "postcard", qty: 45, size: { h: 10, w: 15.25, uom: "cm" }, status: "A" },
+//    { item: "sketchbook", qty: 80, size: { h: 14, w: 21, uom: "cm" }, status: "A" },
+//    { item: "sketch pad", qty: 95, size: { h: 22.85, w: 30.5, uom: "cm" }, status: "A" }
+// ] );
+
+//db.inventory.find({qty:{$in{25, 80, 95}}})
+
+// db.inventory.insertMany([
+//     {qty:45, status:"8"},
+//     {item:"mat", status:"C"},
+//     {item:"mat", qty:45}
+// ]);
+
+//db.inventory.find({status:{$exists:true, $in:["B", "P"]}});
+
+// db.inventory.find({"size.uom":"in"});
+
+
+/* Найти все items, у которых высота больше 20, или статус D */
+// db.inventory.find({$or: [
+//     {"size.h":{$gt:20}},
+//     {status:"D"}
+// ]})
+
+
+// db.inventory.updateMany({status:"A"}, {$set:{status:"done"}});
+
+
+/* Удалить items, у которых ширина меньше, лтбо равна 21. И те,у которых статус отсутствует */
+// db.inventory.deleteMany($or:[{"size.w":{$lte:21}}, {status:{$exists:false}}])
+// db.inventory.find();
+
+//db.users.drop();
+
+
+// db.createCollection("movies", {
+//     validator: {
+//         $jsonSchema: {
+//             bsonType: "object",
+//             required: ["title", "director", "moreInfo"],
+//             properties: {
+//                 title: {
+//                     bsonType: "string",
+//                     description: "must be string"
+//                 },
+//                 director: {
+//                     bsonType: "string"
+//                 },
+//                 moreInfo: {
+//                     bsonType: "object"
+//                     required: ["genre", "year"],
+//                     properties: {
+//                         genre: {
+//                             enum: ["Comedy", "Thriller", "Detective", null],
+//                             description: "must be one from three"
+//                         },
+//                         year : {
+//                             bsonType: "int",
+//                             minimum: 1950,
+//                             maximum: 2099,
+//                             description: "must be an integer in [1950, 2099] and is required"
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// })
+
+// db.movies.insert({
+//     title: 2,
+//     director: "director",
+//     moreInfo: {
+//         genre: "Comedy",
+//         year: 1999
+//     }
+// })
